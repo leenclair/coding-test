@@ -1,6 +1,6 @@
 package dongbin.chapter3;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Problem03 {
 
@@ -8,24 +8,24 @@ public class Problem03 {
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int k = sc.nextInt();
-
+        int m = sc.nextInt();
+        int[][] matrix = new int[n][m];
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++){
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        int answer = solution(matrix);
+        System.out.println(answer);
     }
 
-    static void solution(int n, int k) {
-        int result = 0;
-
-        while (true){
-            int target = (n / k) * k; //25
-            result += (n - target); // 0
-            n = target; // 25
-
-            if(n < k) break;
-            result++;
-            n /= k; // 5 = 25/5
+    static int solution(int[][] matrix) {
+        int answer = Integer.MIN_VALUE;
+        for (int[] row : matrix) {
+            int rowMin = Integer.MAX_VALUE;
+            for (int v : row) rowMin = Math.min(rowMin, v);
+            answer = Math.max(answer, rowMin);
         }
-
-        result += (n - 1);
-
+        return answer;
     }
 }
