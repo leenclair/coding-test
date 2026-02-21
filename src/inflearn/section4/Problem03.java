@@ -15,8 +15,6 @@ public class Problem03 {
             arr[i] = sc.nextInt();
         }
 
-
-
         System.out.println(solution(n, k, arr));
     }
 
